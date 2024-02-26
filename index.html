@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Sumit - Developer Portfile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Poor+Story&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: rgba(82 169 221 / 93%);
+        font-family: "Merriweather", serif;
+      }
+
+      @media screen and (width: 412px) {
+        body {
+          background-color: rgba(82 169 221 / 93%);
+          font-family: "Merriweather", serif;
+        }
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 100px;
+        background-color: rgb(0 89 143 / 93%);
+        font-size: 150%;
+        color: rgb(82 169 221 / 93%);
+      }
+
+      @media screen and (width: 412px) {
+        nav {
+          display: flex;
+          height: 70px;
+          background-color: rgb(0 89 143 / 93%);
+          font-size: 60%;
+          color: rgb(82 169 221 / 93%);
+        }
+      }
+      nav ul {
+        display: flex;
+        justify-content: center;
+      }
+
+      nav ul li {
+        list-style: none;
+        margin: 0 23px;
+      }
+
+      @media screen and (width: 412px) {
+        nav ul li {
+          list-style: none;
+          margin: 0 7px;
+        }
+      }
+
+      .left {
+        font-size: 1.5rem;
+      }
+
+      @media screen and (width: 412px) {
+        .left {
+          font-size: 10px;
+        }
+      }
+      .firstsection {
+        display: flex;
+        justify-content: space-around;
+        margin: 23px 0;
+      }
+
+      .firstsection div {
+        width: 30%;
+      }
+
+      .leftsection {
+        margin: 123px 51px 0;
+        font-size: 180%;
+        color: rgb(28, 66, 238);
+      }
+
+      @media screen and (width: 412px) {
+        .leftsection {
+          margin: 35px 30px 0;
+          font-size: 120%;
+          color: rgb(28, 66, 238);
+        }
+      }
+      .rightsection {
+        margin: 24px 0;
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+
+      @media screen and (width: 412px) {
+        img {
+          height: 130px;
+          width: 110px;
+        }
+      }
+
+      span {
+        color: rgb(212, 0, 255);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="left">Sumit's Portfolio</div>
+        <div class="right"></div>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Services</li>
+          <li>Projects</li>
+          <li>Contact Me</li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="firstsection">
+        <div class="leftsection">
+          HEY, MY NAME IS SUMIT
+          <ul>
+            AND I'M A PASSIONATE
+          </ul>
+          <span id="profession"></span>
+        </div>
+        <div class="rightsection">
+          <img src="dev4.png" alt="PHOTO" />
+        </div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+      var typed = new Typed("#profession", {
+        strings: [
+          "WEB DEVELOPER",
+          "PHOTO EDITOR",
+          "GAMER",
+          "ANDROID DEVELOPER",
+        ],
+        typeSpeed: 50,
+      });
+    </script>
+  </body>
+</html>
