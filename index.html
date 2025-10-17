@@ -209,7 +209,22 @@
             </div>
             
             <!-- Interactive 3D Avatar -->
-
+            <div class="flex justify-center">
+                <div class="relative">
+                    <div class="w-80 h-80 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-2xl floating transform hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="toggleAvatar()">
+                        <svg class="w-40 h-40 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <!-- Orbiting elements -->
+                    <div class="absolute inset-0 animate-spin" style="animation-duration: 20s;">
+                        <div class="absolute top-0 left-1/2 w-4 h-4 bg-blue-400 rounded-full transform -translate-x-1/2 -translate-y-2"></div>
+                        <div class="absolute bottom-0 left-1/2 w-4 h-4 bg-purple-400 rounded-full transform -translate-x-1/2 translate-y-2"></div>
+                        <div class="absolute left-0 top-1/2 w-4 h-4 bg-pink-400 rounded-full transform -translate-x-2 -translate-y-1/2"></div>
+                        <div class="absolute right-0 top-1/2 w-4 h-4 bg-indigo-400 rounded-full transform translate-x-2 -translate-y-1/2"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
