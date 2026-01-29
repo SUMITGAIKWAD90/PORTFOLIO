@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile Website | Sumit Gaikwad Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <header>
+        <nav>
+            <div class="logo">SUMIT GAIKWAD</div>
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="index.html#home" data-link role="menuitem">Home</a></li>
+                <li role="none"><a href="index.html#about" data-link role="menuitem">About</a></li>
+                <li role="none"><a href="index.html#projects" data-link role="menuitem">Projects</a></li>
+                <li role="none"><a href="index.html#contact" data-link role="menuitem">Contact</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </button>
+        </nav>
+    </header>
+
+    <section class="project-hero" style="background-image: url('assets/images/project-3.png');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="glitch" data-text="COMPANY PROFILE WEBSITE">COMPANY PROFILE WEBSITE</h1>
+            <p class="subtitle">Responsive Corporate Site</p>
+        </div>
+    </section>
+
+    <section class="project-detail">
+        <div class="container">
+            <a href="index.html#projects" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Showroom</a>
+            
+            <div class="detail-grid">
+                <div class="detail-info">
+                    <h2>The Challenge</h2>
+                    <p>Creating a professional company profile website that effectively showcases the company's services, values, and achievements while maintaining a modern, user-friendly interface. The challenge was to implement dynamic content management and ensure the site works seamlessly across all devices.</p>
+                    
+                    <h2>The Solution</h2>
+                    <p>I developed a responsive company profile website using Django for the backend and Bootstrap for the frontend. The site features dynamic content management capabilities, allowing easy updates to company information, services, and news. The modern, user-friendly interface ensures excellent user experience across desktop, tablet, and mobile devices.</p>
+                    
+                    <ul class="tech-stack">
+                        <li><i class="fas fa-code"></i> Django</li>
+                        <li><i class="fas fa-paint-brush"></i> Bootstrap</li>
+                        <li><i class="fas fa-database"></i> Dynamic CMS</li>
+                        <li><i class="fas fa-mobile-alt"></i> Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="detail-image">
+                    <img src="assets/images/project-3.png" alt="Company Profile Website Detail">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Sumit Gaikwad. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
