@@ -1,5 +1,8 @@
+// Initialize EmailJS only if config is available
 (function () {
-  emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+  if (typeof EMAILJS_CONFIG !== 'undefined' && typeof emailjs !== 'undefined') {
+    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+  }
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,6 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const button = form.querySelector(".submit-btn");
           const originalText = button.innerHTML;
+
+          // Check if EmailJS is configured
+          if (typeof EMAILJS_CONFIG === 'undefined' || typeof emailjs === 'undefined') {
+            button.innerHTML = "⚠️ Email service not configured";
+            setTimeout(() => {
+              button.innerHTML = originalText;
+            }, 3000);
+            return;
+          }
 
           button.disabled = true;
           button.innerHTML =

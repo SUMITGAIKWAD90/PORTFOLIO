@@ -18,8 +18,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- Preload critical images -->
+    <link rel="preload" href="assets/images/hero-car.png" as="image">
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script src="config.js"></script>
+    <script src="config.js" onerror="console.warn('config.js not loaded - email functionality disabled')"></script>
     <script src="script.js"></script>
   </head>
   <body>
@@ -168,6 +170,7 @@
               <img
                 src="assets/images/project-1.png"
                 alt="Car Accident Detection"
+                loading="lazy"
               />
             </div>
             <div class="card-content">
@@ -186,7 +189,7 @@
           <!-- Project 2 -->
           <a href="project-2.html" class="project-card" data-tilt>
             <div class="card-image">
-              <img src="assets/images/project-2.png" alt="Healthcare App" />
+              <img src="assets/images/project-2.png" alt="Healthcare App" loading="lazy" />
             </div>
             <div class="card-content">
               <div>
@@ -204,7 +207,7 @@
           <!-- Project 3 -->
           <a href="project-3.html" class="project-card" data-tilt>
             <div class="card-image">
-              <img src="assets/images/project-3.png" alt="MDM-Connect" />
+              <img src="assets/images/project-3.png" alt="MDM-Connect" loading="lazy" />
             </div>
             <div class="card-content">
               <div>
@@ -225,6 +228,7 @@
               <img
                 src="assets/images/project-4.png"
                 alt="Company Profile Website"
+                loading="lazy"
               />
             </div>
             <div class="card-content">
