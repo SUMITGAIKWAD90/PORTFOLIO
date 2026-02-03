@@ -1,3 +1,42 @@
+    (function () {
+      emailjs.init("env.public_id");
+    })();
+
+    const form = document.getElementById("contact-form");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const button = form.querySelector(".submit-btn");
+      const originalText = button.innerHTML;
+
+      button.disabled = true;
+      button.innerHTML =
+        '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+      emailjs.sendForm(
+        "env.service_id",
+        "env.template_id",
+        this
+      ).then(
+        function () {
+          button.innerHTML = "Message Sent 🚀";
+          form.reset();
+
+          setTimeout(() => {
+            button.disabled = false;
+            button.innerHTML = originalText;
+          }, 3000);
+        },
+        function (error) {
+          console.error(error);
+          button.disabled = false;
+          button.innerHTML = "❌ Failed. Try Again";
+        }
+      );
+    });
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- Header Scroll Effect ---
     const header = document.querySelector('header');
@@ -341,77 +380,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // --- Contact Form Handler ---
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-
-            // Remove existing messages
-            const existingMessage = contactForm.querySelector('.form-message');
-            if (existingMessage) {
-                existingMessage.remove();
-            }
-
-            // Disable submit button
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-            try {
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ name, email, message })
-                });
-
-                const data = await response.json();
-
-                // Create message element
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'form-message';
-
-                if (response.ok) {
-                    messageDiv.classList.add('success');
-                    messageDiv.textContent = 'Message sent successfully! I\'ll get back to you soon.';
-                    contactForm.reset();
-                } else {
-                    messageDiv.classList.add('error');
-                    messageDiv.textContent = data.error || 'Failed to send message. Please try again.';
-                }
-
-                contactForm.appendChild(messageDiv);
-
-                // Scroll to message
-                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-                // Remove message after 5 seconds
-                setTimeout(() => {
-                    messageDiv.remove();
-                }, 5000);
-
-            } catch (error) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'form-message error';
-                messageDiv.textContent = 'Network error. Please check your connection and try again.';
-                contactForm.appendChild(messageDiv);
-
-                setTimeout(() => {
-                    messageDiv.remove();
-                }, 5000);
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-            }
-        });
-    }
 });
