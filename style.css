@@ -73,6 +73,7 @@ body {
     z-index: 9999;
     pointer-events: none;
     transition: opacity 0.3s;
+    will-change: transform;
 }
 
 .cursor-dot {
@@ -87,7 +88,7 @@ body {
     height: 40px;
     border: 2px solid var(--accent-primary);
     opacity: 0.5;
-    transition: width 0.3s, height 0.3s, opacity 0.3s, transform 0.1s;
+    transition: width 0.3s, height 0.3s, opacity 0.3s;
 }
 
 body.hovering .cursor-outline {

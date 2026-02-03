@@ -1,41 +1,42 @@
-    (function () {
-      emailjs.init("env.public_id");
-    })();
+(function () {
+  emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+})();
 
-    const form = document.getElementById("contact-form");
+const form = document.getElementById("contact-form");
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
 
-      const button = form.querySelector(".submit-btn");
-      const originalText = button.innerHTML;
+  const button = form.querySelector(".submit-btn");
+  const originalText = button.innerHTML;
 
-      button.disabled = true;
-      button.innerHTML =
-        '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  button.disabled = true;
+  button.innerHTML =
+    '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-      emailjs.sendForm(
-        "env.service_id",
-        "env.template_id",
-        this
-      ).then(
-        function () {
-          button.innerHTML = "Message Sent 🚀";
-          form.reset();
+  emailjs
+    .sendForm(
+      EMAILJS_CONFIG.SERVICE_ID,
+      EMAILJS_CONFIG.TEMPLATE_ID,
+      this
+    )
+    .then(
+      function () {
+        button.innerHTML = "Message Sent 🚀";
+        form.reset();
 
-          setTimeout(() => {
-            button.disabled = false;
-            button.innerHTML = originalText;
-          }, 3000);
-        },
-        function (error) {
-          console.error(error);
+        setTimeout(() => {
           button.disabled = false;
-          button.innerHTML = "❌ Failed. Try Again";
-        }
-      );
-    });
-
+          button.innerHTML = originalText;
+        }, 3000);
+      },
+      function (error) {
+        console.error("EmailJS Error:", error);
+        button.disabled = false;
+        button.innerHTML = "❌ Failed. Try Again";
+      }
+    );
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- Header Scroll Effect ---
@@ -61,20 +62,31 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (!cursorDot || !cursorOutline) return;
 
+    let mouseX = 0, mouseY = 0;
+    let outlineX = 0, outlineY = 0;
+
     window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
 
         // Dot follows instantly
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-
-        // Outline follows with lag
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
     });
+
+    // Smooth outline animation using requestAnimationFrame
+    function animateCursor() {
+        const speed = 0.15; // Controls the lag effect (lower = more lag)
+        
+        outlineX += (mouseX - outlineX) * speed;
+        outlineY += (mouseY - outlineY) * speed;
+        
+        cursorOutline.style.left = `${outlineX}px`;
+        cursorOutline.style.top = `${outlineY}px`;
+        
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
 
     magneticElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
