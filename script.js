@@ -2,43 +2,45 @@
   emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
 })();
 
-const form = document.getElementById("contact-form");
-
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const button = form.querySelector(".submit-btn");
-  const originalText = button.innerHTML;
-
-  button.disabled = true;
-  button.innerHTML =
-    '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-  emailjs
-    .sendForm(
-      EMAILJS_CONFIG.SERVICE_ID,
-      EMAILJS_CONFIG.TEMPLATE_ID,
-      this
-    )
-    .then(
-      function () {
-        button.innerHTML = "Message Sent 🚀";
-        form.reset();
-
-        setTimeout(() => {
-          button.disabled = false;
-          button.innerHTML = originalText;
-        }, 3000);
-      },
-      function (error) {
-        console.error("EmailJS Error:", error);
-        button.disabled = false;
-        button.innerHTML = "❌ Failed. Try Again";
-      }
-    );
-});
-
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Contact Form ---
+    const form = document.getElementById("contact-form");
+
+    if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const button = form.querySelector(".submit-btn");
+          const originalText = button.innerHTML;
+
+          button.disabled = true;
+          button.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+          emailjs
+            .sendForm(
+              EMAILJS_CONFIG.SERVICE_ID,
+              EMAILJS_CONFIG.TEMPLATE_ID,
+              this
+            )
+            .then(
+              function () {
+                button.innerHTML = "Message Sent 🚀";
+                form.reset();
+
+                setTimeout(() => {
+                  button.disabled = false;
+                  button.innerHTML = originalText;
+                }, 3000);
+              },
+              function (error) {
+                console.error("EmailJS Error:", error);
+                button.disabled = false;
+                button.innerHTML = "❌ Failed. Try Again";
+              }
+            );
+        });
+    }
     // --- Header Scroll Effect ---
     const header = document.querySelector('header');
     let lastScroll = 0;
